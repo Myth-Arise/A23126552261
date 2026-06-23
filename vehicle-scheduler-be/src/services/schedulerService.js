@@ -1,18 +1,34 @@
-const { getDepots } = require("./depotService");
-const { getVehicles } = require("./vehicleService");
+const {
+  getDepots
+} = require("./depotService");
 
-const maximizeImpact = require(
-  "../utils/knapsack"
+const {
+  getVehicles
+} = require("./vehicleService");
+
+const maximizeImpact =
+  require(
+    "../utils/knapsack"
+  );
+
+const Log = require(
+  "../utils/logger"
 );
 
 async function generateMaintenanceSchedule() {
-  const depots = await getDepots();
 
-  const vehicles = await getVehicles();
+  const depots =
+    await getDepots();
+
+  const vehicles =
+    await getVehicles();
 
   const results = [];
 
-  for (const depot of depots) {
+  for (
+    const depot of depots
+  ) {
+
     const schedule =
       maximizeImpact(
         vehicles,
@@ -29,6 +45,13 @@ async function generateMaintenanceSchedule() {
         schedule.selectedVehicles
     });
   }
+
+  await Log(
+    "backend",
+    "info",
+    "service",
+    "Maintenance schedule generated successfully"
+  );
 
   return results;
 }

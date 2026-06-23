@@ -1,17 +1,31 @@
-const express = require("express");
+const express =
+  require("express");
 
-const router = express.Router();
+const router =
+  express.Router();
 
 const {
   getAllDepots,
   getAllVehicles,
   generateSchedule
-} = require("../controllers/schedulerController");
+} = require(
+  "../controllers/schedulerController"
+);
 
-router.get("/depots", getAllDepots);
+router.get(
+  "/depots",
+  getAllDepots
+);
 
-router.get("/vehicles", getAllVehicles);
+router.get(
+  "/vehicles",
+  getAllVehicles
+);
 
-router.get("/schedule", generateSchedule);
+router.get(
+  "/schedule",
+  generateSchedule
+);
 
-module.exports = router;
+module.exports =
+  router;
